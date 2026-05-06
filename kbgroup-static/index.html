@@ -8,6 +8,166 @@
   <link rel="stylesheet" href="css/test.css" />
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+     .avis-section {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .avis-section h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .avis-container {
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .avis {
+        background: #fff;
+        flex: 1;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        min-width: 0;
+    }
+    .avis img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+    .avis p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .avis .nom {
+        font-size: 13px;
+        font-weight: bold;
+        color: #222;
+    }
+
+
+
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* LEFT COLUMN */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 30px;
+  color: #fff;
+}
+
+.big-card {
+  height: 280px;
+  background: radial-gradient(circle at bottom right,#2563EB, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.big-card h1 {
+  font-size: 75px;
+}
+
+.small-text {
+  font-size: 14px;
+  max-width: 320px;
+  opacity: 0.85;
+}
+
+/* Bottom left card */
+.bottom-card {
+  background: #111;
+}
+
+.bottom-card h1 {
+  font-size: 70px;
+  margin-bottom: 10px;
+}
+
+/* RIGHT COLUMN */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dark-card {
+  background: #111;
+}
+
+.dark-card h1 {
+  font-size: 48px;
+  margin-top: 10px;
+}
+
+.muted {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.avatars {
+  display: flex;
+  gap: 5px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #444;
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  border: 2px solid #22c55e;
+  color: #22c55e;
+  padding: 12px 30px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+  </style>
 </head>
 <body>
 
@@ -152,7 +312,7 @@
                 <img src="assets/repeater-logo.png" alt="Repeater" />
               </div>
               <div class="diagram__node diagram__node--bl">
-                <img src="assets/training-center-logo.png" alt="Training Center" />
+                <img src="assets/training-center-logo.png" alt="Centre de formation" />
               </div>
              
               
@@ -166,42 +326,96 @@
         </div>
       </div>
     </section>
-     <div class="hero__cards">
-          <!-- card image placeholder -->
-          <div class="hero__img-card">
+    <div class="avis-section">
+    <h2>Avis clients</h2>
 
-              <i data-lucide="building-2"></i>
+    <div class="avis-container">
+    <div class="avis">
+    <img src="assets/gims.jpeg" alt="client">
+        <div class="nom">Jean</div>
+    <p>Service rapide et efficace, j’ai été pris en charge immédiatement et tout s’est déroulé sans problème du début à la fin.</p>
 
-          </div>
+</div>
 
-          <div class="stat-card">
-            <i data-lucide="users" class="stat-card__icon"></i>
-            <div class="stat-card__num">100+</div>
-            <div class="stat-card__label">Professionnels<br>Certifiés</div>
-          </div>
+    <div class="avis">
+        <img src="assets/gims.jpeg" alt="client">
+        <div class="nom">Jean</div>
+        <p>Très bonne qualité, les détails sont soignés et le résultat correspond parfaitement à mes attentes.</p>
 
-          <div class="stat-card stat-card--accent">
-            <i data-lucide="star" class="stat-card__icon"></i>
-            <div class="stat-card__num">4.8 <span class="stat-card__unit">/ 5</span></div>
-            <div class="stat-card__label">Note Moyenne<br>Apprenants</div>
-            <div class="stat-card__stars">
-              <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-            </div>
-          </div>
+    </div>
 
-          <div class="stat-card">
-            <i data-lucide="clock" class="stat-card__icon"></i>
-            <div class="stat-card__num">1951+</div>
-            <div class="stat-card__label">Heures de<br>Formation</div>
-          </div>
+    <div class="avis">
+        <img src="assets/gims.jpeg" alt="client">
+        <div class="nom">Jean</div>
+        <p>Expérience fluide, le processus est simple et agréable, je n’ai rencontré aucune difficulté.</p>
 
-          <div class="stat-card stat-card--dark">
-            <i data-lucide="badge-check" class="stat-card__icon"></i>
-            <div class="stat-card__num">6+</div>
-            <div class="stat-card__label">Certifications<br>Internationales</div>
-            <div class="stat-card__sub">Reconnues mondialement</div>
-          </div>
-        </div>
+    </div>
+
+    <div class="avis">
+        <img src="assets/gims.jpeg" alt="client">
+        <div class="nom">Jean</div>
+        <p>Je recommande sans hésiter, le service est fiable et le rendu final est vraiment satisfaisant.</p>
+
+    </div>
+
+    <div class="avis">
+        <img src="assets/gims.jpeg" alt="client">
+        <div class="nom">Jean</div>
+        <p>Excellent rapport qualité, le prix est raisonnable pour un résultat aussi propre et professionnel.</p>
+    </div>
+</div>
+</div>
+    <div class="container">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="card big-card">
+      <p class="small-text">
+        Nous avons aidé plus de 500 personnes dans le monde à atteindre leurs objectifs grâce à des méthodes scientifiquement validées et un accompagnement personnalisé.
+      </p>
+      <h1>4.8/5</h1>
+    </div>
+
+    <div class="card bottom-card">
+      <p class="small-text">
+        Avec des programmes personnalisés de formation et d'accompagnement
+      </p>
+      <h1>95%</h1>
+      <p class="muted">Taux de progression professionnelle</p>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="card dark-card">
+      <div class="avatars">
+        <div class="avatar"></div>
+        <div class="avatar"></div>
+        <div class="avatar"></div>
+        <div class="avatar"></div>
+      </div>
+      <h1>10 000+</h1>
+      <p class="muted">APPRENANTS ACTIFS</p>
+    </div>
+
+    <div class="card dark-card">
+      <p class="small-text">Grâce à nos systèmes personnalisés sur mesure</p>
+      <h1>1500k+</h1>
+      <p class="muted">Heures d'accompagnement</p>
+    </div>
+
+    <div class="card dark-card cta">
+      <div class="button">
+        <div class="dot"></div>
+        INSCRIPTIONS OUVERTES
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
     <!-- ═══ FINAL CTA ═══ -->
     <section class="cta-banner">
       <div class="wrap cta-banner__inner">
@@ -210,7 +424,7 @@
        <div style="justify-content: space-between ; width: 100%; gap: 10px ">
         <a href="contact.html" class="btn btn--green">Se Former maintenant ⭢</a>
         <a href="contact.html" class="btn btn--green">Découvrez Repeater ⭢</a>
-        <a href="contact.html" class="btn btn--green">Découvrez K&B Form ⭢</a>
+        <a href="contact.html" class="btn btn--green">Besoin d'une assistance? ⭢</a>
          </div>
       </div>
     </section>
@@ -242,15 +456,15 @@
         <h4>Nos Projets</h4>
         <ul>
           <li><a href="a-propos.html">Repeater</a></li>
-          <li><a href="services.html">K&B Group Training Center</a></li>
+          <li><a href="services.html">Centre de formation K&B Group</a></li>
 
         </ul>
       </div>
       <div>
         <h4>Nos Services</h4>
         <ul>
-          <li><a href="repeater.html">Repeater (E-learning)</a></li>
-          <li><a href="kbgroup-training-center.html">Training Center</a></li>
+          <li><a href="repeater.html">Repeater (Apprentissage en ligne)</a></li>
+          <li><a href="kbgroup-training-center.html">Centre de formation</a></li>
           <li><a href="services.html">Certifications</a></li>
           <li><a href="services.html">Coaching Exécutif</a></li>
         </ul>
