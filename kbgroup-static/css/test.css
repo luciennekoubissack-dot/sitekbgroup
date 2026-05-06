@@ -160,9 +160,9 @@ h1, h2, h3 {
 }
 .hero h1 .accent { color: #2563EB; }
 .hero__sub {
-  max-width: 800px; font-size: 13px;
+  max-width: 800px; font-size: 17px;
   color: rgba(255,255,255,0.75);
-  margin: 12px auto 20px;
+  margin: 25px auto 30px;
   text-align: center;
   line-height: 1.6;
 }
