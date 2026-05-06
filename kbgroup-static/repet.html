@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repeater — K&B Group SARL</title>
+  <meta name="description" content="K&B Group SARL — Formations professionnelles et certifications internationales en Afrique Centrale." />
+  <link rel="stylesheet" href="css/test.css" />
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* ── REPEATER HERO ── */
+    .repeater-hero {
+      background: linear-gradient(135deg, #0F2922 0%, #1a3d2e 60%, #0d2318 100%);
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .repeater-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(76,175,125,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .repeater-hero__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .repeater-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .repeater-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(76,175,125,0.15);
+      border: 1px solid rgba(76,175,125,0.3);
+      color: #4CAF7D;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .repeater-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .repeater-hero h1 em {
+      font-style: normal;
+      color: #4CAF7D;
+    }
+    .repeater-hero__sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .repeater-hero__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn--repeater {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #4CAF7D;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .btn--repeater:hover {
+      background: #3d9e6e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(76,175,125,0.35);
+    }
+    .btn--repeater-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 28px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .btn--repeater-outline:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+    }
+    /* Hero stats */
+    .repeater-hero__stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .rstat__num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .rstat__label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    /* Hero visual card */
+    .repeater-hero__visual {
+      display: flex;
+      justify-content: center;
+    }
+    .repeater-mockup {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px;
+      width: 100%;
+      max-width: 380px;
+      backdrop-filter: blur(10px);
+    }
+    .rmockup__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .rmockup__logo {
+      width: 36px; height: 36px;
+      background: #4CAF7D;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rmockup__logo svg { width: 18px; height: 18px; color: #fff; }
+    .rmockup__title { font-size: 14px; font-weight: 700; color: #fff; }
+    .rmockup__sub { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .rmockup__progress-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .rmockup__bar {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .rmockup__bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF7D, #2563EB);
+      border-radius: 100px;
+    }
+    .rmockup__modules {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rmodule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .rmodule__icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .rmodule__icon svg { width: 15px; height: 15px; }
+    .rmodule__name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); flex: 1; }
+    .rmodule__badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 100px;
+    }
+
+    /* ── FEATURES SECTION ── */
+    .repeater-features {
+      background: #F5F7FA;
+      padding: 96px 24px;
+    }
+    .repeater-features__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .repeater-features__head {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .repeater-features__head .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #2563EB;
+      margin-bottom: 12px;
+    }
+    .repeater-features__head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.02em;
+    }
+    .repeater-features__head p {
+      font-size: 15px;
+      color: #6B7280;
+      margin-top: 12px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid #E5E7EB;
+      transition: all .25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      border-color: transparent;
+    }
+    .feature-card__icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .feature-card__icon svg { width: 22px; height: 22px; }
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .repeater-how {
+      background: #fff;
+      padding: 96px 24px;
+    }
+    .repeater-how__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .repeater-how__inner { grid-template-columns: 1fr; gap: 48px; } }
+    .repeater-how__content .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #2563EB;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .repeater-how__content h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .repeater-how__content > p {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .step-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-item__num {
+      width: 36px; height: 36px;
+      background: #0F2922;
+      color: #4CAF7D;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-item__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .step-item__desc {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+    /* checklist panel */
+    .repeater-checklist {
+      background: #0F2922;
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .repeater-checklist h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .rchecklist {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .rchecklist li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+    }
+    .rchecklist__dot {
+      width: 22px; height: 22px;
+      background: rgba(76,175,125,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .rchecklist__dot svg { width: 12px; height: 12px; color: #4CAF7D; }
+
+    /* ── CTA BANNER ── */
+    .repeater-cta {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .repeater-cta h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .repeater-cta p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 32px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: #4CAF7D; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/kbgroup-logo.png" alt="K&B Group" />
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Accueil</a>
+        <a href="services.html">Services</a>
+        <a href="projets.html">Nos Entreprises</a>
+        <a href="a-propos.html">À Propos</a>
+        <a href="contact.html" class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileNav">
+      <a href="index.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="projets.html">Nos Entreprises</a>
+      <a href="a-propos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+<main>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="repeater-hero">
+    <div class="repeater-hero__inner wrap">
+      <div>
+        <a href="projets.html" class="back-link">
+          <i data-lucide="arrow-left"></i> Retour aux projets
+        </a>
+        <div class="repeater-hero__eyebrow">
+          <i data-lucide="zap"></i> Plateforme E-learning
+        </div>
+        <h1>Repeater. <em>Apprendre</em>,<br>encore et encore.</h1>
+        <p class="repeater-hero__sub">Plateforme d'apprentissage en ligne signée K&amp;B Group. Maîtrisez vos sujets grâce à la répétition espacée et à des contenus pédagogiques de qualité.</p>
+        <div class="repeater-hero__actions">
+          <a href="contact.html" class="btn--repeater">
+            Commencer maintenant <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="#features" class="btn--repeater-outline">
+            Découvrir la plateforme
+          </a>
+        </div>
+        <div class="repeater-hero__stats">
+          <div>
+            <div class="rstat__num">500+</div>
+            <div class="rstat__label">Apprenants actifs</div>
+          </div>
+          <div>
+            <div class="rstat__num">120+</div>
+            <div class="rstat__label">Cours disponibles</div>
+          </div>
+          <div>
+            <div class="rstat__num">4.9</div>
+            <div class="rstat__label">Note moyenne</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual mockup -->
+      <div class="repeater-hero__visual">
+        <div class="repeater-mockup">
+          <div class="rmockup__header">
+            <div class="rmockup__logo"><i data-lucide="repeat-2"></i></div>
+            <div>
+              <div class="rmockup__title">Repeater</div>
+              <div class="rmockup__sub">Tableau de bord</div>
+            </div>
+          </div>
+          <div class="rmockup__progress-label">
+            <span>Progression globale</span><span style="color:#4CAF7D;font-weight:700;">72%</span>
+          </div>
+          <div class="rmockup__bar"><div class="rmockup__bar-fill" style="width:72%"></div></div>
+          <div class="rmockup__modules">
+            <div class="rmodule">
+              <div class="rmodule__icon" style="background:rgba(37,99,235,0.15);">
+                <i data-lucide="book-open" style="color:#2563EB;"></i>
+              </div>
+              <span class="rmodule__name">Management QHSE</span>
+              <span class="rmodule__badge" style="background:rgba(76,175,125,0.15);color:#4CAF7D;">Complété</span>
+            </div>
+            <div class="rmodule">
+              <div class="rmodule__icon" style="background:rgba(245,158,11,0.15);">
+                <i data-lucide="award" style="color:#F59E0B;"></i>
+              </div>
+              <span class="rmodule__name">Certification ISO 9001</span>
+              <span class="rmodule__badge" style="background:rgba(245,158,11,0.15);color:#F59E0B;">En cours</span>
+            </div>
+            <div class="rmodule">
+              <div class="rmodule__icon" style="background:rgba(76,175,125,0.15);">
+                <i data-lucide="bar-chart-2" style="color:#4CAF7D;"></i>
+              </div>
+              <span class="rmodule__name">Audit &amp; Conformité</span>
+              <span class="rmodule__badge" style="background:rgba(107,114,128,0.15);color:#9CA3AF;">À venir</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="repeater-features" id="features">
+    <div class="repeater-features__inner">
+      <div class="repeater-features__head">
+        <span class="eyebrow">Fonctionnalités</span>
+        <h2>Tout ce dont vous avez besoin pour apprendre efficacement</h2>
+        <p>Une plateforme pensée pour maximiser la rétention et l'engagement des apprenants.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon" style="background:#EFF6FF;">
+            <i data-lucide="monitor-play" style="color:#2563EB;"></i>
+          </div>
+          <h3>Cours interactifs 24/7</h3>
+          <p>Accédez à vos formations à tout moment, depuis n'importe quel appareil, à votre propre rythme.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" style="background:#F0FDF4;">
+            <i data-lucide="repeat-2" style="color:#4CAF7D;"></i>
+          </div>
+          <h3>Répétition espacée</h3>
+          <p>Algorithme intelligent qui planifie vos révisions au moment optimal pour une mémorisation durable.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" style="background:#FFFBEB;">
+            <i data-lucide="clipboard-check" style="color:#F59E0B;"></i>
+          </div>
+          <h3>Quiz auto-évaluatifs</h3>
+          <p>Des exercices pratiques après chaque module pour valider vos acquis et identifier vos lacunes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" style="background:#F5F3FF;">
+            <i data-lucide="trending-up" style="color:#7C3AED;"></i>
+          </div>
+          <h3>Suivi de progression</h3>
+          <p>Tableau de bord personnalisé pour visualiser votre avancement et vos performances en temps réel.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" style="background:#FFF1F2;">
+            <i data-lucide="users" style="color:#E11D48;"></i>
+          </div>
+          <h3>Communauté active</h3>
+          <p>Échangez avec d'autres apprenants, posez vos questions et partagez vos expériences.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" style="background:#F0FDF4;">
+            <i data-lucide="badge-check" style="color:#4CAF7D;"></i>
+          </div>
+          <h3>Certifications en ligne</h3>
+          <p>Obtenez des certificats reconnus à l'issue de vos formations, directement depuis la plateforme.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="repeater-how">
+    <div class="repeater-how__inner wrap">
+      <div class="repeater-how__content">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2>Apprendre autrement. Retenir durablement.</h2>
+        <p>Repeater repense l'apprentissage en ligne avec une approche basée sur la science cognitive : répétition espacée, micro-leçons, évaluations continues.</p>
+        <ol class="steps-list">
+          <li class="step-item">
+            <div class="step-item__num">01</div>
+            <div>
+              <div class="step-item__title">Choisissez votre parcours</div>
+              <div class="step-item__desc">Sélectionnez parmi nos formations certifiantes adaptées à votre domaine et niveau.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-item__num">02</div>
+            <div>
+              <div class="step-item__title">Apprenez à votre rythme</div>
+              <div class="step-item__desc">Suivez les modules interactifs, répondez aux quiz et progressez selon votre disponibilité.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-item__num">03</div>
+            <div>
+              <div class="step-item__title">Obtenez votre certification</div>
+              <div class="step-item__desc">Validez vos compétences et recevez votre certificat reconnu par les employeurs.</div>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="repeater-checklist">
+        <h3>Ce que vous obtenez avec Repeater</h3>
+        <ul class="rchecklist">
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Cours interactifs accessibles 24/7
+          </li>
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Quiz et exercices auto-évaluatifs
+          </li>
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Suivi de progression personnalisé
+          </li>
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Bibliothèque de ressources pédagogiques
+          </li>
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Support communautaire actif
+          </li>
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Certifications délivrées en ligne
+          </li>
+          <li>
+            <div class="rchecklist__dot"><i data-lucide="check"></i></div>
+            Accès mobile et hors-ligne
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="repeater-cta">
+    <h2>Prêt à commencer votre parcours ?</h2>
+    <p>Découvrez comment Repeater peut transformer votre manière d'apprendre.</p>
+    <a href="contact.html" class="btn--repeater">
+      Nous contacter <i data-lucide="arrow-right"></i>
+    </a>
+  </section>
+
+</main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img src="assets/kbgroup-logo.png" alt="K&B Group" class="footer__logo" />
+        <p>Spécialiste des formations et certifications professionnelles en Afrique Centrale.</p>
+        <div class="footer__social">
+          <a href="mailto:contact@kbgroupesarl.com" aria-label="Email"><i data-lucide="mail"></i></a>
+          <a href="#" aria-label="Web"><i data-lucide="globe"></i></a>
+          <a href="tel:+237622144633" aria-label="Phone"><i data-lucide="phone"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="a-propos.html">À Propos</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projets.html">Nos Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nos Projets</h4>
+        <ul>
+          <li><a href="repeater.html">Repeater (E-learning)</a></li>
+          <li><a href="kbgroup-training-center.html">Training Center</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nos Services</h4>
+        <ul>
+          <li><a href="services.html">Audit &amp; Conformité</a></li>
+          <li><a href="services.html">Formation Continue</a></li>
+          <li><a href="services.html">Certifications</a></li>
+          <li><a href="services.html">Coaching Exécutif</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous Contacter</h4>
+        <ul>
+          <li><i data-lucide="map-pin"></i> ESSOS, Avenue Germaine, Yaoundé</li>
+          <li><i data-lucide="phone"></i> +237 622 144 633</li>
+          <li><i data-lucide="phone"></i> +237 679 862 401</li>
+          <li><i data-lucide="mail"></i> contact@kbgroupesarl.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom wrap">
+      <span>© <span id="yr"></span> K&amp;B Groupe SARL — Yaoundé, Cameroun</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></span>
+    </div>
+  </footer>
+
+  <script src="js/test.js"></script>
+</body>
+</html>
