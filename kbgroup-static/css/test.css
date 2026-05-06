@@ -269,7 +269,7 @@ h1, h2, h3 {
 .stat-card__sub { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 2px; }
 
 /* ═══ SECTIONS ═══ */
-.section { padding: 100px 0; }
+.section { padding: 10px 0; }
 .section--dark { background: var(--dark); color: #fff; }
 .section--light { background: var(--white); }
 .section__head { margin-bottom: 26px; max-width: 640px; }
