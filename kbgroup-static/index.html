@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -55,7 +55,146 @@
         color: #222;
     }
 
+    /* ── REVIEWS SECTION ── */
+    .reviews-section {
+      background: #fff;
+      padding: 80px 0;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .reviews-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .reviews-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #2563EB;
+      margin-bottom: 12px;
+    }
+    .reviews-left h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .reviews-left > p {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.7;
+    }
+    .reviews-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+    .reviews-right::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 10%;
+      height: 80%;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, #2563EB, transparent);
+      border-radius: 2px;
+    }
+    .review-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: all .2s;
+      position: relative;
+    }
+    .review-card:hover {
+      border-color: #2563EB;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    }
+    .review-card--active {
+      background: #fff;
+      border-color: #2563EB;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.1);
+    }
+    .review-card__avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #E0E7FF;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .review-card__avatar svg { width: 20px; height: 20px; color: #2563EB; }
+    .review-card--active .review-card__avatar { background: #2563EB; }
+    .review-card--active .review-card__avatar svg { color: #fff; }
+    .review-card__name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .review-card__body p {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+    .review-card__quote {
+      position: absolute;
+      top: 14px; right: 16px;
+      width: 18px; height: 18px;
+      color: #D1D5DB;
+    }
+    .review-card--active .review-card__quote { color: #93C5FD; }
 
+    /* ── PARTNERS GRID ── */
+    .partners-grid {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .partner-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .partner-item__img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #E5E7EB;
+      transition: border-color .25s, transform .25s;
+    }
+    .partner-item__img:hover {
+      border-color: #2563EB;
+      transform: translateY(-4px);
+    }
+    .partner-item__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .partner-item span {
+      font-size: 13px;
+      color: #6B7280;
+      font-weight: 500;
+    }
+    /* Avatar images in review cards */
+    .review-card__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
 
 
 .container {
@@ -208,9 +347,9 @@
 
 
   <div style="justify-content: space-between ; width: 100%; gap: 10px ;">
-        <a href="contact.html" class="btn btn--green">Se Former maintenant  ➜</a>
+        <a href="kbgroup-training-center.html" class="btn btn--green">Se Former maintenant  ➜</a>
         <a href="contact.html" class="btn btn--green">Découvrez Repeater  ➜</a>
-        <a href="contact.html" class="btn btn--green">Découvrez K&B Form  ➜</a>
+        <a href="contact.html" class="btn btn--green">Besoin d'une assistance?  ➜</a>
          </div>
 
 
@@ -326,44 +465,79 @@
         </div>
       </div>
     </section>
-    <div class="avis-section">
-    <h2>Avis clients</h2>
 
-    <div class="avis-container">
-    <div class="avis">
-    <img src="assets/gims.jpeg" alt="client">
-        <div class="nom">Jean</div>
-    <p>Service rapide et efficace, j’ai été pris en charge immédiatement et tout s’est déroulé sans problème du début à la fin.</p>
+    <!-- ═══ ENTREPRISES PARTENAIRES ═══ -->
+    <section class="section section--light" style="padding-top:32px; padding-bottom:32px;">
+      <div class="wrap">
+        <div class="section__head section__head--center" style="text-align:center; margin-bottom:48px;">
+          <h2>Ils nous font confiance</h2>
+          <p>Des organisations qui nous font confiance pour la formation et la certification de leurs équipes.</p>
+        </div>
+        <div class="partners-grid">
+          <div class="partner-item">
+            <div class="partner-item__img">
+              <img src="assets/man.jpg" alt="Entreprise 1" />
+            </div>
+            <span>Entreprise 1</span>
+          </div>
+          <div class="partner-item">
+            <div class="partner-item__img">
+              <img src="assets/contact.jpg" alt="Entreprise 2" />
+            </div>
+            <span>Entreprise 2</span>
+          </div>
+          <div class="partner-item">
+            <div class="partner-item__img">
+              <img src="assets/repet.jpg" alt="Entreprise 3" />
+            </div>
+            <span>Entreprise 3</span>
+          </div>
+          <div class="partner-item">
+            <div class="partner-item__img">
+              <img src="assets/kbgroup-logo.png" alt="Entreprise 4" />
+            </div>
+            <span>Entreprise 4</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
-
-    <div class="avis">
-        <img src="assets/gims.jpeg" alt="client">
-        <div class="nom">Jean</div>
-        <p>Très bonne qualité, les détails sont soignés et le résultat correspond parfaitement à mes attentes.</p>
-
-    </div>
-
-    <div class="avis">
-        <img src="assets/gims.jpeg" alt="client">
-        <div class="nom">Jean</div>
-        <p>Expérience fluide, le processus est simple et agréable, je n’ai rencontré aucune difficulté.</p>
-
-    </div>
-
-    <div class="avis">
-        <img src="assets/gims.jpeg" alt="client">
-        <div class="nom">Jean</div>
-        <p>Je recommande sans hésiter, le service est fiable et le rendu final est vraiment satisfaisant.</p>
-
-    </div>
-
-    <div class="avis">
-        <img src="assets/gims.jpeg" alt="client">
-        <div class="nom">Jean</div>
-        <p>Excellent rapport qualité, le prix est raisonnable pour un résultat aussi propre et professionnel.</p>
-    </div>
-</div>
+    <section class="reviews-section" style="padding-top:32px;">
+      <div class="wrap reviews-grid">
+        <div class="reviews-left">
+          <p class="reviews-eyebrow">Témoignages</p>
+          <h2>Ce que disent<br>nos clients</h2>
+          <p>Des professionnels et organisations d'Afrique Centrale témoignent de l'impact de nos formations et certifications sur leur parcours.</p>
+          <a href="contact.html" class="btn btn--green" style="margin-top:24px; display:inline-flex;">Nous contacter</a>
+        </div>
+        <div class="reviews-right">
+          <div class="review-card">
+            <div class="review-card__avatar"><img src="assets/man.jpg" alt="Marie Nguema" /></div>
+            <div class="review-card__body">
+              <div class="review-card__name">Marie Nguema</div>
+              <p>Formation de qualité exceptionnelle. J'ai obtenu ma certification ISO en 3 mois grâce à l'accompagnement de K&amp;B Group.</p>
+            </div>
+            <i data-lucide="quote" class="review-card__quote"></i>
+          </div>
+          <div class="review-card review-card--active">
+            <div class="review-card__avatar"><img src="assets/contact.jpg" alt="Paul Essomba" /></div>
+            <div class="review-card__body">
+              <div class="review-card__name">Paul Essomba</div>
+              <p>Une équipe professionnelle et disponible. Le programme QHSE a transformé notre approche de la conformité en entreprise.</p>
+            </div>
+            <i data-lucide="quote" class="review-card__quote"></i>
+          </div>
+          <div class="review-card">
+            <div class="review-card__avatar"><img src="assets/repet.jpg" alt="Sophie Atangana" /></div>
+            <div class="review-card__body">
+              <div class="review-card__name">Sophie Atangana</div>
+              <p>Repeater m'a permis de préparer mon examen à mon rythme. Le suivi personnalisé fait vraiment la différence.</p>
+            </div>
+            <i data-lucide="quote" class="review-card__quote"></i>
+          </div>
+        </div>
+      </div>
+    </section>
 </div>
     <div class="container">
 
