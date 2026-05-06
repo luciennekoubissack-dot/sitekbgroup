@@ -48,8 +48,8 @@ h1, h2, h3 {
 @media (min-width: 1024px) { .wrap { padding: 0 48px; } }
 
 .eyebrow {
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.3em;
+  font-size: 50px; font-weight: 700;
+  text-transform: uppercase;
   color: var(--green); margin-bottom: 16px;
 }
 
@@ -265,7 +265,7 @@ h1, h2, h3 {
 .section { padding: 100px 0; }
 .section--dark { background: var(--dark); color: #fff; }
 .section--light { background: var(--white); }
-.section__head { margin-bottom: 56px; max-width: 640px; }
+.section__head { margin-bottom: 26px; max-width: 640px; }
 .section__head--center { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
 .section__head h2 { font-size: 32px; margin-bottom: 14px; }
 .section--dark .section__head h2 { color: #fff; }
@@ -426,7 +426,7 @@ h1, h2, h3 {
 }
 @media (min-width: 1024px) { .integrations { grid-template-columns: 1fr 1fr; } }
 .integrations__content h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 16px; }
-.integrations__content p { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+.integrations__content p { font-size: 20px; color: var(--muted); margin-bottom: 28px; }
 
 /* diagram */
 .integrations__diagram {
