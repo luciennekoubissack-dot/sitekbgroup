@@ -1,0 +1,11 @@
+- Separation du header
+- bouton sur la page d'acceuil
+#### Services
+- arrondir les cadres
+- changer et aggrandir
+### avantages cles
+- une image a gauche
+- logo blanc sur noir
+
+
+### verifier tous les liens
