@@ -9,6 +9,20 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
+     .cadre {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 470px;
+             justify-content: space-between;
+           justify-items: center;
+
+        }
+
      .avis-section {
         max-width: 1100px;
         margin: auto;
@@ -217,8 +231,46 @@
       </div>
     </section>
 
+    <!-- ═══ BENEFITS ═══ -->
+    <section class="section section--light" style="padding-bottom: 60px">
+      <div class="wrap" >
+        <div class="benefits">
+            <div>
+              <img src="assets/man.jpg" alt="Professionnel" height="500" width="600" />
+          </div>
+          <div class="benefits__content">
+            <p class="eyebrow" style="font-size: 30px">Avantages Clés</p>
+            <h2>Les Bénéfices de Notre Système pour Votre Efficacité</h2>
+            <ul class="benefits__list">
+              <li>
+                <div class="check-dot"></div>
+                <div>
+                  <strong>Montée en Compétence Rapide</strong>
+                  <p>Des programmes structurés qui permettent une progression mesurable et rapide des apprenants.</p>
+                </div>
+              </li>
+              <li>
+                <div class="check-dot"></div>
+                <div>
+                  <strong>Optimisation des Processus Internes</strong>
+                  <p>Nos formations QHSE et management améliorent directement la performance opérationnelle.</p>
+                </div>
+              </li>
+              <li>
+                <div class="check-dot"></div>
+                <div>
+                  <strong>Production Axée sur les Résultats</strong>
+                  <p>Chaque programme est conçu avec des objectifs mesurables et des livrables concrets.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ SERVICES ═══ -->
-    <section class="section section--dark">
+    <section class="section section--dark" style="padding-top: 50px; padding-bottom: 50px">
       <div class="wrap">
         <div class="section__head">
           <h2>Services Efficaces et Intégrés</h2>
@@ -251,76 +303,25 @@
       </div>
     </section>
 
-    <!-- ═══ BENEFITS ═══ -->
-    <section class="section section--light">
-      <div class="wrap">
-        <div class="benefits">
-            <div>
-              <img src="assets/man.jpg" alt="Professionnel" height="700" width="600" />
-          </div>
-          <div class="benefits__content">
-            <p class="eyebrow">Avantages Clés</p>
-            <h2>Les Bénéfices de Notre Système pour Votre Efficacité</h2>
-            <ul class="benefits__list">
-              <li>
-                <div class="check-dot"></div>
-                <div>
-                  <strong>Montée en Compétence Rapide</strong>
-                  <p>Des programmes structurés qui permettent une progression mesurable et rapide des apprenants.</p>
-                </div>
-              </li>
-              <li>
-                <div class="check-dot"></div>
-                <div>
-                  <strong>Optimisation des Processus Internes</strong>
-                  <p>Nos formations QHSE et management améliorent directement la performance opérationnelle.</p>
-                </div>
-              </li>
-              <li>
-                <div class="check-dot"></div>
-                <div>
-                  <strong>Production Axée sur les Résultats</strong>
-                  <p>Chaque programme est conçu avec des objectifs mesurables et des livrables concrets.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ═══ PRICING ═══ -->
    
     <!-- ═══ INTEGRATIONS ═══ -->
-    <section class="section section--light">
+    <section class="section section--light" style="padding-top: 50px; padding-bottom: 70px">
       <div class="wrap">
         <div class="integrations">
           <div class="integrations__content">
-            <p class="eyebrow">Nos Projets</p>
+            <p class="eyebrow">Certifications proposées</p>
             <h2>Accompagner les Meilleures Organisations avec des Solutions Intégrées</h2>
             <p>K&amp;B Group opère à travers deux plateformes complémentaires pour couvrir tous les besoins en formation et certification professionnelle.</p>
             <a href="projets.html" class="btn btn--green">Voir nos projets</a>
           </div>
-          <div class="integrations__diagram">
-            <div class="diagram">
-              <!-- center node -->
-              <div class="diagram__center">
-                <img src="assets/kbgroup-logo.png"  alt="K&B Group" />
-              </div>
-              <!-- surrounding nodes -->
-              <div class="diagram__node diagram__node--br">
-                <img src="assets/repeater-logo.png" alt="Repeater" />
-              </div>
-              <div class="diagram__node diagram__node--bl">
-                <img src="assets/training-center-logo.png" alt="Centre de formation" />
-              </div>
-             
-              
-              <!-- connector lines -->
-              <svg class="diagram__lines" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <line x1="150" y1="150" x2="60"  y2="240" stroke="#4CAF7D" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="150" y1="150" x2="240" y2="240" stroke="#4CAF7D" stroke-width="1" stroke-dasharray="4 4"/>
-              </svg>
+          <div class="cadre">
+            <div class="image-container">
+                <img src="assets/pmp1.png" alt="Paysage de montagne">
+            </div><br>
+            <div class="image-container">
+                <img src="assets/tosa.png" alt="Paysage de montagne">
+            </div>
             </div>
           </div>
         </div>
