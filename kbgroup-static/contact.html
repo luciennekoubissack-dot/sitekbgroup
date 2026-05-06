@@ -8,31 +8,232 @@
   <link rel="stylesheet" href="css/test.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
-    .contact-form {
-      display: flex; flex-direction: column; gap: 16px;
-      background: var(--white); padding: 40px; border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    /* ── CONTACT HERO ── */
+    .contact-hero {
+      background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('assets/contact.jpg') center/cover;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
     }
-    .contact-form label { font-size: 13px; font-weight: 600; color: var(--ink); }
-    .contact-form input, .contact-form textarea {
-      width: 100%; padding: 12px 16px; border-radius: 8px;
-      border: 1px solid var(--border); background: var(--bg);
-      font-family: inherit; font-size: 14px; color: var(--ink);
+    .contact-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin: 0;
     }
-    .contact-form input:focus, .contact-form textarea:focus {
-      outline: none; border-color: var(--green);
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      background: #F5F7FA;
+      padding: 80px 0;
     }
-    .info-card {
-      display: flex; align-items: flex-start; gap: 16px;
-      margin-bottom: 24px;
+    .contact-section__header {
+      text-align: center;
+      margin-bottom: 60px;
     }
-    .info-card .ico {
-      width: 44px; height: 44px; background: var(--green-dim);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      color: var(--green); flex-shrink: 0;
+    .contact-section__header h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #1F2937;
+      margin-bottom: 12px;
     }
-    .info-card .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
-    .info-card .val { font-size: 15px; color: var(--ink); font-weight: 500; }
+    .contact-section__header p {
+      font-size: 15px;
+      color: #6B7280;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 1024px) {
+      .contact-grid { grid-template-columns: 38% 1fr; gap: 40px; padding: 0 48px; }
+    }
+
+    /* ── LEFT: INFO CARD ── */
+    .contact-info-card {
+      background: linear-gradient(135deg, rgba(30,40,70,0.95), rgba(15,25,50,0.97)), url('assets/contact.jpg') center/cover;
+      border-radius: 20px;
+      padding: 48px 40px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-info-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,25,50,0.4);
+      z-index: 0;
+    }
+    .contact-info-card > * { position: relative; z-index: 1; }
+    .contact-info-card__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .contact-info-card h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .contact-info-card__desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+    }
+    .contact-info-card__items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .cinfo-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .cinfo-item__icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cinfo-item__icon svg {
+      width: 22px;
+      height: 22px;
+      color: #fff;
+    }
+    .cinfo-item__label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .cinfo-item__value {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* ── RIGHT: FORM ── */
+    .contact-form-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .contact-form-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 12px;
+    }
+    .contact-form-card__desc {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .cform {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cform__field input,
+    .cform__field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #111;
+      background: #F9FAFB;
+      outline: none;
+      transition: all .2s;
+      resize: none;
+    }
+    .cform__field input::placeholder,
+    .cform__field textarea::placeholder {
+      color: #9CA3AF;
+    }
+    .cform__field input:focus,
+    .cform__field textarea:focus {
+      border-color: var(--green);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .cform__submit {
+      width: 100%;
+      justify-content: center;
+      padding: 14px;
+      font-size: 14px;
+      border-radius: 10px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .cform__submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.4);
+      background: #1D4ED8;
+    }
+
+    /* ── MAP ── */
+    .contact-map {
+      line-height: 0;
+    }
+    .contact-map iframe {
+      display: block;
+      width: 100%;
+      height: 450px;
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #111;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      border-left: 4px solid var(--green);
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: all .3s;
+      z-index: 200;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -64,61 +265,88 @@
   </nav>
 
   <main>
-    <section class="section section--light" style="padding-top: 40px;">
-      <div class="wrap">
-        <div class="section__head section__head--center">
-          <div class="eyebrow">Contact</div>
-          <h2>Parlons de votre projet.</h2>
+
+    <!-- ═══ CONTACT HERO ═══ -->
+    <section class="contact-hero">
+      <h1>Contact Us</h1>
+    </section>
+
+    <!-- ═══ CONTACT SECTION ═══ -->
+    <section class="contact-section">
+      <div class="contact-grid">
+
+        <!-- LEFT: Info Card with Background -->
+        <div class="contact-info-card">
+          <div class="contact-info-card__eyebrow">NOUS CONTACTER</div>
+          <h2>N'hésitez pas à nous contacter pour plus d'informations.</h2>
+          <p class="contact-info-card__desc">Notre équipe est à votre disposition pour vous accompagner dans votre parcours de certification et répondre à toutes vos demandes.</p>
+
+          <div class="contact-info-card__items">
+            <div class="cinfo-item">
+              <div class="cinfo-item__icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div>
+                <div class="cinfo-item__label">Adresse</div>
+                <div class="cinfo-item__value">ESSOS, Avenue Germaine<br>Yaoundé - Cameroun</div>
+              </div>
+            </div>
+
+            <div class="cinfo-item">
+              <div class="cinfo-item__icon">
+                <i data-lucide="mail"></i>
+              </div>
+              <div>
+                <div class="cinfo-item__label">Email</div>
+                <div class="cinfo-item__value">contact@kbgroupesarl.com<br>info@kbgroupesarl.com</div>
+              </div>
+            </div>
+
+            <div class="cinfo-item">
+              <div class="cinfo-item__icon">
+                <i data-lucide="phone"></i>
+              </div>
+              <div>
+                <div class="cinfo-item__label">Téléphone</div>
+                <div class="cinfo-item__value">+237 622 144 633<br>+237 679 862 401</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="integrations" style="margin-top: 60px;">
-          <div>
+        <!-- RIGHT: Form -->
+        <div class="contact-form-card">
+          <h3>Envoyez-nous un message</h3>
+          <p class="contact-form-card__desc">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
 
-            <div class="info-card"><div class="ico"><i data-lucide="map-pin"></i></div><div><div class="label">Adresse</div><div class="val">ESSOS, Avenue Germaine<br>Yaoundé, Cameroun</div></div></div>
-            <div class="info-card"><div class="ico"><i data-lucide="phone"></i></div><div><div class="label">Téléphone</div><div class="val">+237 622 144 633<br>+237 679 862 401</div></div></div>
-            <div class="info-card"><div class="ico"><i data-lucide="mail"></i></div><div><div class="label">Email</div><div class="val">contact@kbgroupesarl.com</div></div></div>
-            <div class="info-card"><div class="ico"><i data-lucide="globe"></i></div><div><div class="label">Site Web</div><div class="val">www.kbgroupesarl.com</div></div></div>
-          </div>
-
-          <form id="contact-form" class="contact-form">
-            <div>
-              <label for="name">Nom complet</label>
-              <input type="text" id="name" name="name" required style="margin-top: 8px;" />
+          <form id="contact-form" class="cform">
+            <div class="cform__field">
+              <input type="text" name="name" placeholder="Nom complet" required />
             </div>
-            <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required style="margin-top: 8px;" />
+            <div class="cform__field">
+              <input type="email" name="email" placeholder="Adresse Email" required />
             </div>
-            <div>
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required style="margin-top: 8px;"></textarea>
+            <div class="cform__field">
+              <textarea name="message" rows="5" placeholder="Votre Message..." required></textarea>
             </div>
-            <button type="submit" class="btn btn--green" style="justify-content: center; margin-top: 8px;">Envoyer le message</button>
+            <button type="submit" class="cform__submit">Envoyer</button>
           </form>
         </div>
+
       </div>
     </section>
-  </main>
 
-  <section class="section section--light map-section">
-    <div class="wrap">
-      <div class="section__head section__head--center">
-        <h2>Nous trouver à Yaoundé</h2>
-        <p>Retrouvez-nous à l'adresse ESSOS, Avenue Germaine, près de Yaoundé.</p>
-      </div>
-      <div class="map-frame" style="margin-top: 5px;">
-        <iframe
-          width="100%"
-          height="480"
-          frameborder="0"
-          style="border:0;"
-          loading="lazy"
-          allowfullscreen
-          src="https://maps.google.com/maps?q=3.8688630999984532,11.536351199999267&z=15&output=embed">
-        </iframe>
-      </div>
+    <!-- ═══ MAP ═══ -->
+    <div class="contact-map">
+      <iframe
+        frameborder="0"
+        loading="lazy"
+        allowfullscreen
+        src="https://maps.google.com/maps?q=3.8688630999984532,11.536351199999267&z=15&output=embed">
+      </iframe>
     </div>
-  </section>
+
+  </main>
 
   <!-- ═══ FOOTER ═══ -->
   <footer class="footer">
@@ -127,9 +355,9 @@
         <img src="assets/kbgroup-logo.png" alt="K&B Group" class="footer__logo" />
         <p>Spécialiste des formations et certifications professionnelles en Afrique Centrale.</p>
         <div class="footer__social">
-          <a href="contact.html" aria-label="Email"><i data-lucide="mail"></i></a>
-          <a href="contact.html" aria-label="Web"><i data-lucide="globe"></i></a>
-          <a href="contact.html" aria-label="Phone"><i data-lucide="phone"></i></a>
+          <a href="mailto:contact@kbgroupesarl.com" aria-label="Email"><i data-lucide="mail"></i></a>
+          <a href="#" aria-label="Web"><i data-lucide="globe"></i></a>
+          <a href="tel:+237622144633" aria-label="Phone"><i data-lucide="phone"></i></a>
         </div>
       </div>
       <div>
@@ -141,18 +369,18 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-       <div>
+      <div>
         <h4>Nos Projets</h4>
         <ul>
-          <li><a href="a-propos.html">Repeater</a></li>
-          <li><a href="services.html">K&B Group Training Center</a></li>
+          <li><a href="repeater.html">Repeater (E-learning)</a></li>
+          <li><a href="kbgroup-training-center.html">Training Center</a></li>
         </ul>
       </div>
       <div>
         <h4>Nos Services</h4>
         <ul>
-          <li><a href="repeater.html">Repeater (E-learning)</a></li>
-          <li><a href="kbgroup-training-center.html">Training Center</a></li>
+          <li><a href="services.html">Audit &amp; Conformité</a></li>
+          <li><a href="services.html">Formation Continue</a></li>
           <li><a href="services.html">Certifications</a></li>
           <li><a href="services.html">Coaching Exécutif</a></li>
         </ul>
@@ -173,6 +401,17 @@
     </div>
   </footer>
 
+  <div class="toast" id="toast">Message envoyé avec succès !</div>
+
   <script src="js/test.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      this.reset();
+    });
+  </script>
 </body>
 </html>
