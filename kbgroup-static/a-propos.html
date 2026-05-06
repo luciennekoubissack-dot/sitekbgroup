@@ -1,94 +1,129 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>À Propos — K&B Group SARL</title>
-<meta name="description" content="K&amp;B Group SARL — Formations professionnelles et certifications internationales en Afrique Centrale." />
-<link rel="stylesheet" href="css/styles.css" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À Propos — K&B Group SARL</title>
+  <meta name="description" content="K&B Group SARL — Formations professionnelles et certifications internationales en Afrique Centrale." />
+  <link rel="stylesheet" href="css/test.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-<nav class="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="assets/kbgroup-logo.png" alt="K&B Group" />
-    </a>
-    <div class="nav-links">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/kbgroup-logo.png" alt="K&B Group" />
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Accueil</a>
+        <a href="services.html">Services</a>
+        <a href="projets.html">Nos Projets</a>
+        <a href="a-propos.html">À Propos</a>
+        <a href="contact.html" class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileNav">
       <a href="index.html">Accueil</a>
       <a href="services.html">Services</a>
       <a href="projets.html">Nos Projets</a>
       <a href="a-propos.html">À Propos</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
-  </div>
-  <div class="nav-mobile">
-    <a href="index.html">Accueil</a>
-    <a href="services.html">Services</a>
-    <a href="projets.html">Nos Projets</a>
-    <a href="a-propos.html">À Propos</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-<main>
+  </nav>
 
-<section class="page-head section-lg" style="padding-top: 80px;">
-  <div class="container">
-    <div class="eyebrow">À Propos</div>
-    <h1>Forger les talents qui transforment l'Afrique.</h1>
-
-    <div class="about-grid" style="margin-top: 48px;">
-      <div class="about-text">
-        <p><span class="accent">K&amp;B Groupe SARL</span> est une entreprise camerounaise spécialisée dans les formations professionnelles et la délivrance de certifications reconnues à l'échelle internationale.</p>
-        <p>Depuis sa création, K&amp;B Group accompagne entreprises, institutions et particuliers dans leur quête d'excellence opérationnelle. Nos méthodes pédagogiques rigoureuses, nos formateurs expérimentés et notre réseau international nous permettent de proposer des programmes à la pointe des standards mondiaux.</p>
-        <p>À travers nos deux projets phares — <span class="accent">Repeater</span> pour l'apprentissage en ligne et <span class="accent">K&amp;BGroup Training Center</span> pour la formation présentielle — nous offrons un écosystème complet pour la montée en compétence durable.</p>
+  <main>
+    <section class="section section--light" style="padding-top: 120px;">
+      <div class="wrap">
+        <div class="section__head section__head--center">
+          <div class="eyebrow">À Propos</div>
+          <h2>Forger les talents qui transforment l'Afrique.</h2>
+        </div>
+        
+        <div class="integrations" style="margin-top: 60px;">
+          <div class="integrations__content">
+            <p style="margin-bottom: 20px;"><strong style="color: var(--green);">K&amp;B Groupe SARL</strong> est une entreprise camerounaise spécialisée dans les formations professionnelles et la délivrance de certifications reconnues à l'échelle internationale.</p>
+            <p style="margin-bottom: 20px;">Depuis sa création, K&amp;B Group accompagne entreprises, institutions et particuliers dans leur quête d'excellence opérationnelle. Nos méthodes pédagogiques rigoureuses, nos formateurs expérimentés et notre réseau international nous permettent de proposer des programmes à la pointe des standards mondiaux.</p>
+            <p>À travers nos deux projets phares — <strong>Repeater</strong> pour l'apprentissage en ligne et <strong>K&amp;BGroup Training Center</strong> pour la formation présentielle — nous offrons un écosystème complet pour la montée en compétence durable.</p>
+          </div>
+          <div class="integrations__diagram">
+            <div class="pricing-grid" style="grid-template-columns: 1fr; width: 100%;">
+              <div class="pricing-card pricing-card--featured">
+                <h3 style="color: #fff; margin-bottom: 8px;">Mission</h3>
+                <p>Élever les standards professionnels en Afrique Centrale par la formation et la certification.</p>
+              </div>
+              <div class="pricing-card">
+                <h3 style="color: #fff; margin-bottom: 8px;">Vision</h3>
+                <p>Devenir la référence panafricaine en matière d'excellence pédagogique et de validation des compétences.</p>
+              </div>
+              <div class="pricing-card">
+                <h3 style="color: #fff; margin-bottom: 8px;">Valeurs</h3>
+                <p>Rigueur, intégrité, excellence et engagement envers la réussite de chacun de nos apprenants.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-    </div>
+    </section>
+  </main>
 
-    <div class="values-grid">
-      <div class="value-tile"><h3>Mission</h3><p>Élever les standards professionnels en Afrique Centrale par la formation et la certification.</p></div>
-      <div class="value-tile"><h3>Vision</h3><p>Devenir la référence panafricaine en matière d'excellence pédagogique et de validation des compétences.</p></div>
-      <div class="value-tile"><h3>Valeurs</h3><p>Rigueur, intégrité, excellence et engagement envers la réussite de chacun de nos apprenants.</p></div>
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img src="assets/kbgroup-logo.png" alt="K&B Group" class="footer__logo" />
+        <p>Spécialiste des formations et certifications professionnelles en Afrique Centrale.</p>
+        <div class="footer__social">
+          <a href="contact.html" aria-label="Email"><i data-lucide="mail"></i></a>
+          <a href="contact.html" aria-label="Web"><i data-lucide="globe"></i></a>
+          <a href="contact.html" aria-label="Phone"><i data-lucide="phone"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="a-propos.html">À Propos</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projets.html">Nos Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+       <div>
+        <h4>Nos Projets</h4>
+        <ul>
+          <li><a href="a-propos.html">Repeater</a></li>
+          <li><a href="services.html">K&B Group Training Center</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nos Services</h4>
+        <ul>
+          <li><a href="repeater.html">Repeater (E-learning)</a></li>
+          <li><a href="kbgroup-training-center.html">Training Center</a></li>
+          <li><a href="services.html">Certifications</a></li>
+          <li><a href="services.html">Coaching Exécutif</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous Contacter</h4>
+        <ul>
+          <li><i data-lucide="map-pin"></i> ESSOS, Avenue Germaine, Yaoundé</li>
+          <li><i data-lucide="phone"></i> +237 622 144 633</li>
+          <li><i data-lucide="phone"></i> +237 679 862 401</li>
+          <li><i data-lucide="mail"></i> contact@kbgroupesarl.com</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+    <div class="footer__bottom wrap">
+      <span>© <span id="yr"></span> K&amp;B Groupe SARL — Yaoundé, Cameroun</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></span>
+    </div>
+  </footer>
 
-</main>
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <h3>K&B Groupe SARL</h3>
-      <p style="color: rgba(242,237,228,0.6);">
-        Spécialiste des formations et certifications professionnelles en Afrique Centrale.
-      </p>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <ul>
-        <li>📍 ESSOS, Avenue Germaine</li>
-        <li>📞 +237 622 144 633<br>+237 679 862 401</li>
-        <li>✉ contact@kbgroupesarl.com</li>
-        <li>🌐 kbgroupesarl.com</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projets.html">Nos Projets</a></li>
-        <li><a href="a-propos.html">À Propos</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © <span data-year></span> K&B Groupe SARL — Yaoundé, Cameroun
-  </div>
-</footer>
-<div class="toast" id="toast"></div>
-<script src="js/main.js"></script>
+  <script src="js/test.js"></script>
 </body>
 </html>
