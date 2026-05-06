@@ -3,11 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projets — K&B Group SARL</title>
+  <title>Entreprises — K&B Group SARL</title>
   <meta name="description" content="K&B Group SARL — Formations professionnelles et certifications internationales en Afrique Centrale." />
   <link rel="stylesheet" href="css/test.css" />
      <link rel="stylesheet" href="css/services2.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        /* Conteneur principal pour les deux cadres */
+        .cadres-container {
+            display: flex;
+            gap: 30px;
+            max-width: 1100px;
+
+            flex-wrap: wrap;
+            justify-content: space-around;
+            justify-self: center;
+            margin-left: 30px;
+
+        }
+
+        /* Style de chaque cadre */
+        .cadre {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 500px;
+             justify-content: space-around;
+
+        }
+
+        .cadre:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Conteneur de l'image */
+        .image-container {
+            background: white;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-bottom: 2px solid #18181B;
+
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .cadre:hover .image-container img {
+            transform: scale(1.05);
+        }
+
+        /* Zone de texte */
+        .texte-zone {
+            padding: 20px;
+            background: white;
+        }
+
+        .texte-zone h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .project-link{
+            color: #1D4ED8;
+
+        }
+        .texte-zone p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cadres-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .cadre {
+                min-width: auto;
+            }
+
+            .image-container {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +111,7 @@
       <div class="nav__links">
         <a href="index.html">Accueil</a>
         <a href="services.html">Services</a>
-        <a href="projets.html">Nos Projets</a>
+        <a href="projets.html">Nos Entreprises</a>
         <a href="a-propos.html">À Propos</a>
         <a href="contact.html" class="nav__cta">Contact</a>
       </div>
@@ -31,7 +122,7 @@
     <div class="nav__mobile" id="mobileNav">
       <a href="index.html">Accueil</a>
       <a href="services.html">Services</a>
-      <a href="projets.html">Nos Projets</a>
+      <a href="projets.html">Nos Entreprises</a>
       <a href="a-propos.html">À Propos</a>
       <a href="contact.html">Contact</a>
     </div>
@@ -41,7 +132,7 @@
     <section class="section section--light" style="padding-top: 40px;">
         <div class="wrap">
             <div class="section__head section__head--center">
-        <h1><span class="eyebrow">Nos Projets</span></h1><br/>
+        <h1><span class="eyebrow">Nos Entreprises</span></h1><br/>
 
           <h2>Une expertise complète, du diagnostic à la certification.</h2>
           <p>K&B Group propose une gamme intégrée de services pour accompagner la montée en compétence des organisations et de leurs talents.</p>
@@ -49,64 +140,45 @@
       </div>
     </section>
 
-     <div class="container">
-
-        <!-- Service 1: Audit et conformité -->
-        <div class="service">
-            <div class="service-text">
-                <h2>Audit et Conformité</h2>
-                <p>
-                    Notre service d'audit et de conformité assure que vos processus et systèmes respectent les normes internationales et réglementations locales.
-                    Nous effectuons des évaluations complètes pour identifier les lacunes et proposer des solutions adaptées à votre secteur d'activité.
-                </p>
-                <p>
-                    Grâce à notre expertise, nous vous aidons à maintenir une conformité continue, réduisant les risques juridiques et améliorant votre réputation.
-                    Nos rapports détaillés incluent des recommandations pratiques pour une mise en œuvre efficace des améliorations nécessaires.
-                </p>
+     <div class="cadres-container">
+        <!-- Premier cadre -->
+        <div class="cadre">
+            <div class="image-container">
+                <img src="assets/repeater-logo.png" alt="Paysage de montagne">
             </div>
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800" alt="Audit et conformité">
-            </div>
+            <div class="texte-zone">
+                <div  style="margin-bottom: 13px; font-size: 20px">Apprentissage en ligne</div>
+          <h2 style="margin-bottom: 4px">Repeater</h2>
+          <p style="margin-bottom: 10px">Plateforme e-learning interactive offrant des cours, exercices et révisions adaptés à chaque apprenant.</p>
+          <a href="" ><span class="project-link">Découvrir le projet ↗</span></a>
+        </div>
         </div>
 
-        <!-- Service 2: Formation continue -->
-        <div class="service">
-            <div class="service-text">
-                <h2>Formation Continue</h2>
-                <p>
-                    La formation continue est essentielle pour maintenir et développer les compétences de vos équipes.
-                    Nous proposons des programmes de formation sur mesure, adaptés aux besoins spécifiques de votre organisation et de vos collaborateurs.
-                </p>
-                <p>
-                    Nos formations combinent théorie et pratique, utilisant des méthodes pédagogiques innovantes pour maximiser l'apprentissage.
-                    Que ce soit en présentiel ou à distance, nous garantissons une montée en compétences durable et mesurable pour vos équipes.
-                </p>
+        <!-- Deuxième cadre -->
+        <div class="cadre">
+            <div class="image-container">
+                <img src="assets/training-center-logo.png" alt="Océan et plage">
             </div>
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800" alt="Formation continue">
-            </div>
+            <div class="texte-zone">
+                <div style="margin-bottom: 13px; font-size: 20px">Centre de formations</div>
+          <h2 style="margin-bottom: 4px">KBGroup Training Center</h2>
+          <p style="margin-bottom: 10px">Centre de formation présentiel proposant des cursus certifiants dans des domaines stratégiques.</p>
+          <a href="" ><span class="project-link">Découvrir le projet ↗</span></a>
+         </div>
         </div>
-
-        <!-- Service 3: Préparation aux certifications et certification -->
-        <div class="service">
-            <div class="service-text">
-                <h2>Préparation aux Certifications et Certification</h2>
-                <p>
-                    Nous vous accompagnons dans votre démarche de certification avec une préparation complète et personnalisée.
-                    Nos experts vous guident à travers les exigences des normes internationales (ISO, etc.) et vous préparent aux audits de certification.
-                </p>
-                <p>
-                    De l'analyse initiale à l'obtention du certificat, nous assurons un suivi rigoureux pour garantir votre succès.
-                    Notre approche méthodique et notre expérience nous permettent d'atteindre des taux de réussite élevés pour nos clients.
-                </p>
+         <!-- Troisième cadre -->
+         <div class="cadre">
+            <div class="image-container">
+                <img src="assets/training-center-logo.png" alt="Océan et plage">
             </div>
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800" alt="Préparation aux certifications">
-            </div>
+            <div class="texte-zone">
+                <div style="margin-bottom: 13px; font-size: 20px">Centre de formations</div>
+          <h2 style="margin-bottom: 4px">KBGroup Training Center</h2>
+          <p style="margin-bottom: 10px">Centre de formation présentiel proposant des cursus certifiants dans des domaines stratégiques.</p>
+          <a href=""  ><span class="project-link">Découvrir le projet ↗</span></a>
+         </div>
         </div>
-
     </div>
-
 
   </main>
 
