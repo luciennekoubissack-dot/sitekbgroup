@@ -7,6 +7,7 @@
   <meta name="description" content="K&B Group SARL — Formations professionnelles et certifications internationales en Afrique Centrale." />
   <link rel="stylesheet" href="css/test.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LftAN4sAAAAAJgB4Xqihg06NKxAm9kjkVKgf1B3"></script>
   <style>
     /* ── CONTACT HERO ── */
     .contact-hero {
@@ -31,20 +32,6 @@
     .contact-section {
       background: #F5F7FA;
       padding: 80px 0;
-    }
-    .contact-section__header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .contact-section__header h1 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      color: #1F2937;
-      margin-bottom: 12px;
-    }
-    .contact-section__header p {
-      font-size: 15px;
-      color: #6B7280;
     }
     .contact-grid {
       display: grid;
@@ -116,22 +103,9 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .cinfo-item__icon svg {
-      width: 22px;
-      height: 22px;
-      color: #fff;
-    }
-    .cinfo-item__label {
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-    .cinfo-item__value {
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-    }
+    .cinfo-item__icon svg { width: 22px; height: 22px; color: #fff; }
+    .cinfo-item__label { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .cinfo-item__value { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
 
     /* ── RIGHT: FORM ── */
     .contact-form-card {
@@ -140,23 +114,9 @@
       padding: 40px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     }
-    .contact-form-card h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 12px;
-    }
-    .contact-form-card__desc {
-      font-size: 13px;
-      color: #6b7280;
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-    .cform {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    .contact-form-card h3 { font-size: 1.6rem; font-weight: 700; color: #111; margin-bottom: 12px; }
+    .contact-form-card__desc { font-size: 13px; color: #6b7280; line-height: 1.7; margin-bottom: 28px; }
+    .cform { display: flex; flex-direction: column; gap: 16px; }
     .cform__field input,
     .cform__field textarea {
       width: 100%;
@@ -172,9 +132,7 @@
       resize: none;
     }
     .cform__field input::placeholder,
-    .cform__field textarea::placeholder {
-      color: #9CA3AF;
-    }
+    .cform__field textarea::placeholder { color: #9CA3AF; }
     .cform__field input:focus,
     .cform__field textarea:focus {
       border-color: var(--green);
@@ -195,33 +153,40 @@
       letter-spacing: 0.08em;
       cursor: pointer;
       transition: all .3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .cform__submit:hover {
+    .cform__submit:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(37,99,235,0.4);
       background: #1D4ED8;
     }
+    .cform__submit:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    /* Spinner */
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    .cform__submit.loading .spinner { display: block; }
+    .cform__submit.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── MAP ── */
-    .contact-map {
-      line-height: 0;
-    }
-    .contact-map iframe {
-      display: block;
-      width: 100%;
-      height: 450px;
-    }
+    .contact-map { line-height: 0; }
+    .contact-map iframe { display: block; width: 100%; height: 450px; }
 
     /* ── TOAST ── */
     .toast {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
-      background: #111;
-      color: #fff;
+      bottom: 28px; right: 28px;
       padding: 14px 24px;
       border-radius: 10px;
-      border-left: 4px solid var(--green);
       font-size: 14px;
       font-weight: 500;
       opacity: 0;
@@ -229,11 +194,11 @@
       transition: all .3s;
       z-index: 200;
       pointer-events: none;
+      max-width: 340px;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast--success { background: #111; color: #fff; border-left: 4px solid var(--green); }
+    .toast--error { background: #fff; color: #b91c1c; border-left: 4px solid #ef4444; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
   </style>
 </head>
 <body>
@@ -275,7 +240,7 @@
     <section class="contact-section">
       <div class="contact-grid">
 
-        <!-- LEFT: Info Card with Background -->
+        <!-- LEFT: Info Card -->
         <div class="contact-info-card">
           <div class="contact-info-card__eyebrow">NOUS CONTACTER</div>
           <h2>N'hésitez pas à nous contacter pour plus d'informations.</h2>
@@ -283,29 +248,21 @@
 
           <div class="contact-info-card__items">
             <div class="cinfo-item">
-              <div class="cinfo-item__icon">
-                <i data-lucide="map-pin"></i>
-              </div>
+              <div class="cinfo-item__icon"><i data-lucide="map-pin"></i></div>
               <div>
                 <div class="cinfo-item__label">Adresse</div>
                 <div class="cinfo-item__value">ESSOS, Avenue Germaine<br>Yaoundé - Cameroun</div>
               </div>
             </div>
-
             <div class="cinfo-item">
-              <div class="cinfo-item__icon">
-                <i data-lucide="mail"></i>
-              </div>
+              <div class="cinfo-item__icon"><i data-lucide="mail"></i></div>
               <div>
                 <div class="cinfo-item__label">Email</div>
                 <div class="cinfo-item__value">contact@kbgroupesarl.com<br>info@kbgroupesarl.com</div>
               </div>
             </div>
-
             <div class="cinfo-item">
-              <div class="cinfo-item__icon">
-                <i data-lucide="phone"></i>
-              </div>
+              <div class="cinfo-item__icon"><i data-lucide="phone"></i></div>
               <div>
                 <div class="cinfo-item__label">Téléphone</div>
                 <div class="cinfo-item__value">+237 622 144 633<br>+237 679 862 401</div>
@@ -319,7 +276,7 @@
           <h3>Envoyez-nous un message</h3>
           <p class="contact-form-card__desc">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
 
-          <form id="contact-form" class="cform">
+          <form id="contact-form" class="cform" novalidate>
             <div class="cform__field">
               <input type="text" name="name" placeholder="Nom complet" required />
             </div>
@@ -329,7 +286,11 @@
             <div class="cform__field">
               <textarea name="message" rows="5" placeholder="Votre Message..." required></textarea>
             </div>
-            <button type="submit" class="cform__submit">Envoyer</button>
+            <input type="hidden" name="recaptcha_token" id="recaptcha_token" />
+            <button type="submit" class="cform__submit" id="submit-btn">
+              <span class="spinner"></span>
+              <span class="btn-text">Envoyer</span>
+            </button>
           </form>
         </div>
 
@@ -349,7 +310,7 @@
   </main>
 
   <!-- ═══ FOOTER ═══ -->
- <footer class="footer">
+  <footer class="footer">
     <div class="wrap footer__grid">
       <div class="footer__brand">
         <img src="assets/kbgroup-logo.png" alt="K&B Group" class="footer__logo" />
@@ -368,12 +329,11 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-       <div>
+      <div>
         <h4>Nos Projets</h4>
         <ul>
           <li><a href="a-propos.html">Repeater</a></li>
           <li><a href="services.html">Centre de formation K&B Group</a></li>
-
         </ul>
       </div>
       <div>
@@ -401,16 +361,65 @@
     </div>
   </footer>
 
-  <div class="toast" id="toast">Message envoyé avec succès !</div>
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
   <script src="js/test.js"></script>
   <script>
+    // ── Toast helper ──────────────────────────────────────────────
+    function showToast(message, type) {
+      var toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast toast--' + type + ' show';
+      setTimeout(function() { toast.classList.remove('show'); }, 4500);
+    }
+
+    // ── Formulaire de contact ─────────────────────────────────────
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3500);
-      this.reset();
+
+      var form = this;
+      var btn  = document.getElementById('submit-btn');
+
+      btn.disabled = true;
+      btn.classList.add('loading');
+
+      // Générer le token reCAPTCHA v3 avant l'envoi
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LftAN4sAAAAAJgB4Xqihg06NKxAm9kjkVKgf1B3', { action: 'contact' })
+        .then(function(token) {
+          document.getElementById('recaptcha_token').value = token;
+
+          var data = new FormData(form);
+
+          fetch('/kbgroup-site-html/kbgroup-static/send_mail.php', {
+            method: 'POST',
+            body: data
+          })
+          .then(function(response) { return response.text(); })
+          .then(function(text) {
+            try {
+              var result = JSON.parse(text);
+              if (result.success) {
+                showToast('✅ ' + result.message, 'success');
+                form.reset();
+              } else {
+                showToast('❌ ' + result.message, 'error');
+              }
+            } catch(err) {
+              console.error('Réponse brute du serveur :', text);
+              showToast('❌ Erreur serveur. Consultez la console pour les détails.', 'error');
+            }
+          })
+          .catch(function(err) {
+            showToast('❌ Erreur réseau : ' + err.message, 'error');
+          })
+          .finally(function() {
+            btn.disabled = false;
+            btn.classList.remove('loading');
+          });
+        });
+      });
     });
   </script>
 </body>
