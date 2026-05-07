@@ -60,10 +60,9 @@ h1, h2, h3 {
   letter-spacing: 0.04em; border-radius: 10px;
   cursor: pointer; border: none; transition: all .2s;
   font-family: inherit;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 50px;
-
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
 }
 .btn--green { background: var(--green); color: #fff; }
 .btn--green:hover { background: white; color: black}
@@ -103,7 +102,7 @@ h1, h2, h3 {
 .nav__cta:hover { background: #1D4ED8 !important; }
 .nav__burger {
   display: flex; background: none; border: none;
-  color: #fff; cursor: pointer;
+  color: #111; cursor: pointer;
 }
 .nav__burger svg { width: 22px; height: 22px; }
 @media (min-width: 1024px) { .nav__burger { display: none; } }
@@ -125,22 +124,25 @@ h1, h2, h3 {
 .hero {
   background: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
               url('../assets/acc.jpg') center/cover no-repeat;
-
   text-align: center;
-  height: 600px;
+  min-height: 100vh;
   display: flex;
-  align-items: first;
-
+  align-items: center;
 }
-.hero__inner { display: flex; flex-direction: column; align-items: center; width: 100%; margin-top:80px; margin-bottom: 30px }
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 80px 24px 40px;
+}
 .hero__tabs {
   display: inline-flex;
-  background: blue;
+  background: var(--green);
   border-radius: 20px;
   padding: 4px;
   margin-bottom: 9px;
   gap: 10px;
-
 }
 .tab {
   padding: 8px 20px; font-size: 13px; font-weight: 600;
@@ -150,21 +152,26 @@ h1, h2, h3 {
 }
 .tab--active { background: var(--white); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 .hero h1 {
-  font-size: 70px;
+  font-size: clamp(1.6rem, 5vw, 4.5rem);
   font-weight: 700;
   color: #ffffff;
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-align: center;
-  max-width: 9500px; margin-bottom: 10px;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto 10px;
 }
 .hero h1 .accent { color: #2563EB; }
 .hero__sub {
-  max-width: 800px; font-size: 17px;
+  max-width: 640px;
+  width: 100%;
+  font-size: clamp(13px, 1.8vw, 17px);
   color: rgba(255,255,255,0.75);
-  margin: 25px auto 30px;
+  margin: 16px auto 24px;
   text-align: center;
   line-height: 1.6;
+  padding: 0 16px;
 }
 
 /* hero stat cards row */
@@ -176,6 +183,12 @@ h1, h2, h3 {
   gap: 20px;
   width: 100%;
   margin-top: 1px;
+}
+
+@media (max-width: 768px) {
+  .hero__cards { display: none; }
+  .hero__inner { padding: 100px 20px 48px; }
+  .hero h1 { font-size: clamp(1.4rem, 8vw, 2.2rem); }
 }
 
 .hero__img-card {
@@ -540,3 +553,28 @@ h1, h2, h3 {
 }
 .footer__bottom a { color: rgba(255,255,255,0.3); }
 .footer__bottom a:hover { color: var(--green); }
+
+/* ── RESPONSIVE FIXES ── */
+
+/* Container stats : responsive */
+.container {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Cadre certifications : flexible */
+.cadre {
+  height: auto;
+  min-height: 300px;
+}
+
+/* Benefits : pas de marge négative sur mobile */
+@media (max-width: 1023px) {
+  .benefits__content {
+    margin-left: 0 !important;
+  }
+}
