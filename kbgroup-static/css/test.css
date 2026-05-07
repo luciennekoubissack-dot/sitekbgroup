@@ -105,11 +105,12 @@ h1, h2, h3 {
   display: flex; background: none; border: none;
   color: #fff; cursor: pointer;
 }
-.nav__burger svg { width: 22px; height: 22px; }
+.nav__burger svg { width: 22px; height: 22px;color: black; }
 @media (min-width: 1024px) { .nav__burger { display: none; } }
 .nav__mobile {
   display: none; flex-direction: column; gap: 0;
   background: var(--dark-card);
+  color: black;
   border-top: 1px solid var(--dark-border);
 }
 .nav__mobile.open { display: flex; }
@@ -319,7 +320,7 @@ h1, h2, h3 {
 
 /* ═══ BENEFITS ═══ */
 .benefits {
-  display: grid; grid-template-columns: 1fr; gap: 72px; align-items: center;
+  display: grid; grid-template-columns: 1fr  ; gap: 72px; align-items: center;
 }
 @media (min-width: 1024px) { .benefits { grid-template-columns: 1fr 1fr; } }
 
