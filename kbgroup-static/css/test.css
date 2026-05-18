@@ -138,7 +138,7 @@ h1, h2, h3 {
 ═══════════════════════════════════ */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
-              url('../assets/acc.jpg') center/cover no-repeat;
+              url('../assets/IMG_2262.jpeg') center/cover no-repeat;
   text-align: center;
   min-height: 100svh;
   display: flex; align-items: center;
@@ -327,16 +327,16 @@ h1, h2, h3 {
 .integrations__content p  { font-size:clamp(14px, 1.8vw, 18px); color:var(--muted); margin-bottom:20px; }
 .integrations__content ul {
   list-style:disc; padding-left:18px;
-  display:flex; flex-direction:column; gap:8px; margin-bottom:24px;
+  display:flex; flex-direction:row; gap:12px; margin-bottom:24px;
 }
 .integrations__content ul li { font-size:14px; color:var(--muted); }
 
 .cadre {
-  width:100%; background:#fff; border-radius:15px; overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,0.12); height:auto; min-height:180px;
+  width:100%; background:#fff; border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
 }
 .cadre .image-container { padding:16px; }
-.cadre .image-container img { width:100%; height:auto; object-fit:contain; }
+.cadre .image-container img { width:100%;  }
 
 /* ═══════════════════════════════════
    PARTENAIRES
@@ -348,9 +348,9 @@ h1, h2, h3 {
 @media (min-width: 768px)  { .partners-grid { gap:36px; } }
 @media (min-width: 1024px) { .partners-grid { gap:48px; } }
 
-.partner-item { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.partner-item { display:flex; flex-direction:column; align-items:center; gap:8px;}
 .partner-item__img {
-  width:60px; height:44px; overflow:hidden;
+  width:70px; height:80px; overflow:hidden;
   transition:transform .25s, opacity .25s; opacity:0.75;
 }
 @media (min-width: 480px)  { .partner-item__img { width:75px; height:52px; } }
@@ -514,9 +514,9 @@ h1, h2, h3 {
    DIAGRAM
 ═══════════════════════════════════ */
 .integrations__diagram {
-  display:flex; align-items:center; justify-content:center;
+  display:flex; align-self: start;
   background:var(--bg); border-radius:16px; border:1px solid var(--border);
-  padding:32px; min-height:280px;
+
 }
 .diagram { position:relative; width:260px; height:260px; }
 @media (min-width: 768px) { .diagram { width:300px; height:300px; } }
