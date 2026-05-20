@@ -71,7 +71,7 @@
             height: 400px;
             object-fit: cover;
 
-            border: 3px solid #000;
+            border-radius: 20px;
         }
 
         footer {
