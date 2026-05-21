@@ -44,7 +44,7 @@ use PHPMailer\PHPMailer\Exception;
 define('GMAIL_USER',     'Contact');
 define('GMAIL_PASSWORD', 'ghjo tjmg kzkj lcym');
 define('DESTINATAIRE',   'contact@kbgroupesarl.com');
-define('RECAPTCHA_SECRET', '6LdRcvUsAAAAAO97RB3QwkD-HbBCmcnuY3WvwXKg');
+define('RECAPTCHA_SECRET', '');
 
 // ── Sécurité : POST uniquement ───────────────────────────────────
 header('Content-Type: application/json; charset=UTF-8');
