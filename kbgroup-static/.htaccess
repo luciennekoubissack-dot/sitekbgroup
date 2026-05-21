@@ -41,7 +41,7 @@ Options -Indexes
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; frame-src https://maps.google.com https://www.google.com https://recaptcha.google.com; connect-src 'self' https://www.google.com https://recaptcha.google.com; font-src 'self' https://fonts.gstatic.com;"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; frame-src https://maps.google.com https://www.google.com https://www.recaptcha.net https://recaptcha.google.com; frame-ancestors 'self'; connect-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com; font-src 'self' https://fonts.gstatic.com;"
 </IfModule>
 
 # ── 6. BLOQUER LES USER-AGENTS MALVEILLANTS ──────────────────────
@@ -77,6 +77,7 @@ AddDefaultCharset UTF-8
     ExpiresByType image/jpeg "access plus 1 month"
     ExpiresByType image/png "access plus 1 month"
     ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/avif "access plus 1 month"
     ExpiresByType text/css "access plus 1 week"
     ExpiresByType application/javascript "access plus 1 week"
 </IfModule>

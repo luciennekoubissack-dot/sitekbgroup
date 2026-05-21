@@ -12,7 +12,17 @@ set_exception_handler(function($e) {
 });
 
 header('Content-Type: application/json; charset=UTF-8');
-header('Access-Control-Allow-Origin: https://localhost');
+$allowed_origins = [
+    'https://localhost',
+    'https://kbgroupesarl.com',
+    'https://www.kbgroupesarl.com',
+];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+} else {
+    header('Access-Control-Allow-Origin: https://kbgroupesarl.com');
+}
 header('Access-Control-Allow-Methods: POST');
 
 // ── Vérification PHPMailer ───────────────────────────────────────
@@ -31,10 +41,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // ── Configuration Gmail ──────────────────────────────────────────
-define('GMAIL_USER',     'monaclucie@gmail.com');
+define('GMAIL_USER',     'Contact');
 define('GMAIL_PASSWORD', 'ghjo tjmg kzkj lcym');
-define('DESTINATAIRE',   'colette.koubissack@saintjeaningenieur.org');
-define('RECAPTCHA_SECRET', '6LftAN4sAAAAAPDPbuDDkTtvPlVBEfXWMtsb5If8');
+define('DESTINATAIRE',   'contact@kbgroupesarl.com');
+define('RECAPTCHA_SECRET', '6LdRcvUsAAAAAO97RB3QwkD-HbBCmcnuY3WvwXKg');
 
 // ── Sécurité : POST uniquement ───────────────────────────────────
 header('Content-Type: application/json; charset=UTF-8');
@@ -60,7 +70,7 @@ if (!$is_local) {
         RECAPTCHA_SECRET . '&response=' . urlencode($recaptcha_token)
     );
     $captcha_result = json_decode($verify, true);
-    if (!$captcha_result['success'] || $captcha_result['score'] < 0.5) {
+    if (!$captcha_result['success']) {
         http_response_code(422);
         echo json_encode(['success' => false, 'message' => 'Vérification anti-robot échouée. Veuillez réessayer.']);
         exit;
@@ -74,6 +84,7 @@ function clean(string $data): string {
 
 $nom     = clean($_POST['name']    ?? '');
 $email   = clean($_POST['email']   ?? '');
+$objet   = clean($_POST['objet']   ?? '');
 $message = clean($_POST['message'] ?? '');
 
 // ── Validation ───────────────────────────────────────────────────
@@ -90,6 +101,11 @@ if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (empty($message) || strlen($message) < 10) {
     http_response_code(422);
     echo json_encode(['success' => false, 'message' => 'Le message doit contenir au moins 10 caractères.']);
+    exit;
+}
+if (empty($objet)) {
+    http_response_code(422);
+    echo json_encode(['success' => false, 'message' => "L'objet est obligatoire."]);
     exit;
 }
 
@@ -114,7 +130,7 @@ try {
 
     // Contenu de l'email
     $mail->isHTML(true);
-    $mail->Subject = '[K&B Group] Nouveau message de ' . $nom;
+    $mail->Subject = '[K&B Group] ' . $objet . ' — ' . $nom;
     $mail->Body    = "
         <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
             <div style='background: #1e2846; padding: 24px; border-radius: 8px 8px 0 0;'>
@@ -123,6 +139,7 @@ try {
             <div style='background: #f9fafb; padding: 24px; border: 1px solid #e5e7eb;'>
                 <p><strong>Nom :</strong> {$nom}</p>
                 <p><strong>Email :</strong> {$email}</p>
+                <p><strong>Objet :</strong> {$objet}</p>
                 <hr style='border: none; border-top: 1px solid #e5e7eb; margin: 16px 0;'>
                 <p><strong>Message :</strong></p>
                 <p style='background: #fff; padding: 16px; border-radius: 6px; border: 1px solid #e5e7eb;'>" . nl2br($message) . "</p>

@@ -7,7 +7,7 @@
   <meta name="description" content="K&B Group SARL — Formations professionnelles et certifications internationales en Afrique Centrale." />
   <link rel="stylesheet" href="css/test.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LftAN4sAAAAAJgB4Xqihg06NKxAm9kjkVKgf1B3"></script>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
   <style>
     /* ── CONTACT HERO ── */
     .contact-hero {
@@ -117,6 +117,29 @@
     .contact-form-card h3 { font-size: 1.6rem; font-weight: 700; color: #111; margin-bottom: 12px; }
     .contact-form-card__desc { font-size: 13px; color: #6b7280; line-height: 1.7; margin-bottom: 28px; }
     .cform { display: flex; flex-direction: column; gap: 16px; }
+    .cform__field select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #111;
+      background: #F9FAFB;
+      outline: none;
+      transition: all .2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+    .cform__field select:focus {
+      border-color: var(--green);
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .cform__field select option[value=""] { color: #9CA3AF; }
     .cform__field input,
     .cform__field textarea {
       width: 100%;
@@ -177,6 +200,10 @@
     .cform__submit.loading .btn-text { display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    .cform__captcha {
+      display: flex;
+      justify-content: flex-start;
+    }
     /* ── MAP ── */
     .contact-map { line-height: 0; }
     .contact-map iframe { display: block; width: 100%; height: 450px; }
@@ -284,9 +311,21 @@
               <input type="email" name="email" placeholder="Adresse Email" required />
             </div>
             <div class="cform__field">
+              <select name="objet" required>
+                <option value="" disabled selected>-- Objet de votre message --</option>
+                <option value="Se documenter">Se documenter</option>
+                <option value="Demander un diagnostic">Demander un diagnostic</option>
+                <option value="Découvrir nos formations">Découvrir nos formations</option>
+                <option value="Lancer un projet">Lancer un projet</option>
+              </select>
+            </div>
+            <div class="cform__field">
               <textarea name="message" rows="5" placeholder="Votre Message..." required></textarea>
             </div>
             <input type="hidden" name="recaptcha_token" id="recaptcha_token" />
+            <div class="cform__captcha">
+              <div id="recaptcha-widget"></div>
+            </div>
             <button type="submit" class="cform__submit" id="submit-btn">
               <span class="spinner"></span>
               <span class="btn-text">Envoyer</span>
@@ -366,6 +405,14 @@
 
   <script src="js/test.js"></script>
   <script>
+    // ── reCAPTCHA v2 — rendu explicite ───────────────────────────
+    var recaptchaWidgetId;
+    function onRecaptchaLoad() {
+      recaptchaWidgetId = grecaptcha.render('recaptcha-widget', {
+        sitekey: '6LdRcvUsAAAAAJbgBFoYtyDCumets1xbDfdhvCcM'
+      });
+    }
+
     // ── Toast helper ──────────────────────────────────────────────
     function showToast(message, type) {
       var toast = document.getElementById('toast');
@@ -381,44 +428,47 @@
       var form = this;
       var btn  = document.getElementById('submit-btn');
 
+      // Vérifier que le captcha v2 a été coché
+      var captchaResponse = grecaptcha.getResponse(recaptchaWidgetId);
+      if (!captchaResponse) {
+        showToast('❌ Veuillez cocher "Je ne suis pas un robot".', 'error');
+        return;
+      }
+
       btn.disabled = true;
       btn.classList.add('loading');
 
-      // Générer le token reCAPTCHA v3 avant l'envoi
-      grecaptcha.ready(function() {
-        grecaptcha.execute('6LftAN4sAAAAAJgB4Xqihg06NKxAm9kjkVKgf1B3', { action: 'contact' })
-        .then(function(token) {
-          document.getElementById('recaptcha_token').value = token;
+      document.getElementById('recaptcha_token').value = captchaResponse;
 
-          var data = new FormData(form);
+      var data = new FormData(form);
 
-          fetch('/kbgroup-site-html/kbgroup-static/send_mail.php', {
-            method: 'POST',
-            body: data
-          })
-          .then(function(response) { return response.text(); })
-          .then(function(text) {
-            try {
-              var result = JSON.parse(text);
-              if (result.success) {
-                showToast('✅ ' + result.message, 'success');
-                form.reset();
-              } else {
-                showToast('❌ ' + result.message, 'error');
-              }
-            } catch(err) {
-              console.error('Réponse brute du serveur :', text);
-              showToast('❌ Erreur serveur. Consultez la console pour les détails.', 'error');
-            }
-          })
-          .catch(function(err) {
-            showToast('❌ Erreur réseau : ' + err.message, 'error');
-          })
-          .finally(function() {
-            btn.disabled = false;
-            btn.classList.remove('loading');
-          });
-        });
+      fetch('/kbgroup-site-html/kbgroup-static/send_mail.php', {
+        method: 'POST',
+        body: data
+      })
+      .then(function(response) { return response.text(); })
+      .then(function(text) {
+        try {
+          var result = JSON.parse(text);
+          if (result.success) {
+            showToast('✅ ' + result.message, 'success');
+            form.reset();
+            grecaptcha.reset(recaptchaWidgetId);
+          } else {
+            showToast('❌ ' + result.message, 'error');
+            grecaptcha.reset(recaptchaWidgetId);
+          }
+        } catch(err) {
+          console.error('Réponse brute du serveur :', text);
+          showToast('❌ Erreur serveur. Consultez la console pour les détails.', 'error');
+        }
+      })
+      .catch(function(err) {
+        showToast('❌ Erreur réseau : ' + err.message, 'error');
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.classList.remove('loading');
       });
     });
   </script>
